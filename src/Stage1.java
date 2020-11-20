@@ -1,4 +1,5 @@
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,11 @@ public class Stage1 extends HttpServlet {
 
         // Set response content type
         response.setContentType("text/html");
+
+        Cookie cookie = new Cookie("name","chris123");
+        cookie.setMaxAge(60*60*24*365);
+        response.addCookie(cookie);
+
 
         // Actual logic goes here.
         PrintWriter out = response.getWriter();

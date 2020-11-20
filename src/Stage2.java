@@ -1,5 +1,6 @@
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,12 +38,27 @@ public class Stage2 extends HttpServlet {
             throws ServletException, IOException {
 
         // Set response content type
+        String cookieVal = "";
+
+        Cookie[] cookies = request.getCookies();
+        for (int i = 0; i < cookies.length; i++) {
+            if (cookies[i].getName().equals("name")) {
+                cookieVal = cookies[i].getValue();
+            }
+        }
         response.setContentType("text/html");
+        // if cookieval == null
+        // ask them to log in
+        // if user == chris123
+        // library.getSOngsByUser(chris123)
+        // else if user == marisa
+        // library.getSongsByUser(marisa)
 
         PrintWriter out = response.getWriter();
         String content = getContent();
 
         out.println(content);
+        out.println(cookieVal);
     }
 
     public void destroy() {
