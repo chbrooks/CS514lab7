@@ -1,4 +1,4 @@
-### Lab 7: Web Technology
+### Lab 7: Web Applications
 
 #### 30 points
 
